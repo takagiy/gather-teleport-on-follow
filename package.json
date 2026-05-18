@@ -1,0 +1,27 @@
+{
+  "name": "gather-teleport-on-follow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension that teleports you next to a player when you click Follow in Gather Town.",
+  "license": "MIT",
+  "author": "Yuki Takagi <takagiy.4dev@gmail.com>",
+  "scripts": {
+    "build": "bun run build.ts build",
+    "dev": "bun run build.ts watch",
+    "zip": "bun run build.ts zip",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write . && eslint --fix .",
+    "check": "eslint . && prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "latest",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.3",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.59.3"
+  }
+}

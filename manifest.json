@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Gather Town Teleport on Follow",
+  "description": "Teleports you next to a player when you click Follow in Gather Town.",
+  "version": "1.0.0",
+  "minimum_chrome_version": "111",
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Gather Town Teleport on Follow"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://app.gather.town/*"],
+      "js": ["injected.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ]
+}

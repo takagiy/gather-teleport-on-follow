@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+# Native Windows scripts work best with CRLF when invoked directly.
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# Binary types — don't normalize.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.ico   binary
+*.zip   binary
