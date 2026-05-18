@@ -81,7 +81,17 @@ Certifications:
 
 ### Privacy policy URL
 
-No data is collected, but the Web Store still asks for a URL. **TODO:** decide on a hosting location (GitHub Pages, a personal site, etc.) and publish a short statement reflecting the "no data collected" facts above, then paste the URL here.
+The policy text lives at [`PRIVACY.md`](../PRIVACY.md) in this repository. Once the repo is pushed to GitHub, paste the blob URL into the dashboard:
+
+```
+https://github.com/<user>/gather-teleport-on-follow/blob/main/PRIVACY.md
+```
+
+Notes:
+
+- Repository must be **public**.
+- Use a branch reference (`main`) rather than a commit SHA so the URL keeps working after edits.
+- Also update the "Contact" link inside `PRIVACY.md` to point at the same repo's issues page.
 
 ## Distribution
 
