@@ -1,6 +1,6 @@
 {
   "name": "gather-teleport-on-follow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Chrome extension that teleports you next to a player when you click Follow in Gather Town.",

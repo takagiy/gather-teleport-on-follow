@@ -5,6 +5,7 @@
 const TAG = "[GatherTeleport/page]";
 
 type Player = {
+  id?: string;
   x?: number;
   y?: number;
   map?: string;
@@ -20,6 +21,7 @@ type EventContext = { playerId: string };
 type GatherGame = {
   teleport: (mapId: string, x: number, y: number) => void;
   getPlayer: (uid: string) => Player | undefined;
+  getMyPlayer: () => Player;
   setFollowTarget: (followTarget: string, targetId?: string) => void;
   subscribeToEvent: (
     event: "playerSetsFollowTarget",
@@ -34,6 +36,10 @@ declare global {
     __gatherTeleportInspect?: () => unknown;
     game?: GatherGame;
   }
+}
+
+function getLocalPlayerId(game: GatherGame): string | null {
+  return game.getMyPlayer().id ?? null;
 }
 
 function teleportToTarget(game: GatherGame, targetId: string): void {
@@ -78,6 +84,23 @@ function handleFollowEvent(
   context: EventContext,
 ): void {
   const targetId = data.playerSetsFollowTarget.followTarget;
+  // Empty followTarget = "stop following" event (also fired by our own
+  // setFollowTarget("") after the teleport). Nothing to do.
+  if (!targetId) return;
+
+  // The event is broadcast for any player in the space who changes their
+  // follow target, not just the local user. Only react when WE initiated it.
+  const myId = getLocalPlayerId(game);
+  if (!myId) {
+    console.warn(
+      TAG,
+      "could not resolve local player id — processing event without filter",
+      { contextPlayerId: context.playerId },
+    );
+  } else if (context.playerId !== myId) {
+    return;
+  }
+
   console.log(TAG, "follow event → teleport", {
     targetId,
     contextPlayerId: context.playerId,
